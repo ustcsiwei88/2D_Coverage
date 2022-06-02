@@ -15,7 +15,7 @@
 #include"vec2.h"
 #include<omp.h>
 
-#define GS 50 // Grid Scale: GS x GS
+#define GS 64 // Grid Scale: GS x GS
 
 vec2l farthest_clustering(const vec2l &pts, int K, double& radius){
     // Farthest clustering for pts in O(number of samples * number of centers)
@@ -46,6 +46,23 @@ vec2l farthest_clustering(const vec2l &pts, int K, double& radius){
     }
     radius = max_val;
 	return res;
+}
+
+vec2l iterative_centering(const vec2l &pts, int K, double& radius){
+    // use iterative centering
+    // step1, sample K random points
+    // step2, cluster will 1-nearest neighbor
+    // step3, apply 1-center for each cluster, and go to step2 unless center does not update anymore
+    // resample several times
+    vec2l pts_local = pts;
+    shuffle(begin(pts_local), end(pts_local));
+    vec2l centers;
+    for(int i=0;i<K;i++) centers.push_back(pts_local[i]);
+    while(1){
+        vector<vector<int>> grouped_pts(K);
+        // voronoi
+        
+    }
 }
 
 vec2l ilp(const vec2l &pts, const polygon &p, int K, double &radius){
