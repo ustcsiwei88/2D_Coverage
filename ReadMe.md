@@ -10,8 +10,8 @@ This repo contains algorithms described in paper https://arxiv.org/pdf/2002.0847
 
 To run it,
 
-1. install GuroBi, and update GuroBi installation location in Makefile
-2. make all
+1. install GuroBi, and update Gurobi installation location in Makefile
+2. `make all`
 3. run `./opg2d algo_number < problem.txt > ans.txt` for OPG2D or `./org2d algo_number < problem.txt > ans.txt` for ORG2D
    - `problem.txt` should contain the number of vertex, the number of samples, the number of centers (robots), and then the polygon coordinates in clockwise or counter-clockwise order.
 4. visualize the solution using `python draw_algo problem.txt ans.txt`
